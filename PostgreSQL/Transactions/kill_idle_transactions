@@ -1,0 +1,45 @@
+-- kill all idle in trasasction sessions (with timeout) exept safe_users transactions
+CREATE OR REPLACE FUNCTION kill_idle_transactions(
+    timelimit INTERVAL DEFAULT '10 minutes',
+    safe_users TEXT[] DEFAULT '{}')
+    RETURNS SETOF JSON
+    LANGUAGE plpgsql
+AS
+$f$
+DECLARE
+    cancelled JSON;
+
+BEGIN
+
+    FOR cancelled IN
+        WITH
+            terminated AS (SELECT pg_stat_activity.*, PG_TERMINATE_BACKEND(pid)
+                               FROM pg_stat_activity
+                               WHERE state = 'idle in transaction'
+                                 AND (NOW() - state_change) > timelimit
+                                 AND (usename != ANY (safe_users)
+                                   OR safe_users = '{}')),
+            termformat AS (SELECT NOW() AS killtime,
+                                  datname,
+                                  pid,
+                                  usename,
+                                  application_name,
+                                  client_addr,
+                                  backend_start,
+                                  xact_start,
+                                  state_change,
+                                  waiting,
+                                  "query"
+                               FROM terminated)
+        SELECT ROW_TO_JSON(termformat.*)
+            FROM termformat
+        LOOP
+
+            RETURN NEXT cancelled;
+
+        END LOOP;
+
+    RETURN;
+
+END;
+$f$;
