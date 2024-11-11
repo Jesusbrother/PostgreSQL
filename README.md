@@ -143,4 +143,98 @@ Scripts to manage and automate reindexing for improved performance.
 - `1_script.sh`: Performs reindexing operations.
 - `2_cron.txt`: Cron job configuration for weekly reindex execution.
 
+### Vacuum and Analyze
+
+Scripts to manage and automate the vacuum and analyze processes, helping to keep table statistics up-to-date and minimize table bloat.
+
+- `1_script.sh`: Executes vacuum and analyze routines for tables.
+- `2_cron.txt`: Cron job configuration for weekly execution of vacuum and analyze tasks.
+
+## Memory
+
+Scripts for monitoring and optimizing memory usage, including cache hit ratios, buffer usage, and memory-intensive queries.
+
+- `work_mem_settings.sql`: Suggests optimal settings for `work_mem` based on query usage.
+- `buffer_usage.sql`: Analyzes buffer usage across queries to optimize memory usage.
+- `cache_hit_ratio.sql`: Calculates the cache hit ratio to assess memory efficiency.
+- `mem_intensive_queries.sql`: Identifies memory-intensive queries that may require optimization.
+- `mem_usage.sh`: Monitors PostgreSQL memory usage.
+- `sys_mem_usage.sh`: Tracks system memory usage, focusing on PostgreSQL processes.
+- `temp_file_usage.sh`: Monitors temporary file usage, which may indicate insufficient memory allocation.
+
+## Network
+
+Scripts for monitoring network activity and managing connections, including tracking active connections, data transfer rates, and network usage.
+
+- `data_transfer_rates.sql`: Monitors data transfer rates for queries (requires `pg_stat_statements`).
+- `active_conn.sql`: Lists currently active connections.
+- `check_max_conn_util.sql`: Checks maximum connection utilization to avoid overloading.
+- `conn_by_IP.sql`: Groups connections by IP address to identify frequent sources.
+- `idle_conn.sql`: Identifies idle connections that may need termination.
+- `network_usage.sh`: Monitors network usage by PostgreSQL processes at the system level.
+
+## Query Optimization
+
+Scripts designed to analyze and improve query performance by identifying long-running queries, missing indexes, and execution statistics.
+
+- `find_missing_and_unused_indexes.sql`: Detects missing or unused indexes to optimize query performance.
+- `long_run_queries.sql`: Lists long-running queries that may require optimization.
+- `query_exec_statistics.sql`: Provides execution statistics for queries to identify resource-intensive operations.
+
+## Replication
+
+Scripts for monitoring and managing PostgreSQL replication, including replication slots, lag, and WAL archive status.
+
+- `replication_slots_on_standby.sql`: Checks replication slots on the standby server.
+- `master_repl_status.sql`: Shows replication status on the primary (master) server.
+- `replica_lag_on_standby.sql`: Monitors replication lag on the standby server.
+- `replication_heavy_queries.sql`: Identifies queries generating high WAL activity, impacting replication performance.
+- `replication_performance_metrics.sql`: Provides performance metrics for each standby server.
+- `replication_slot_status.sql`: Checks the status of replication slots on the primary server.
+- `WAL_archive_status.sql`: Monitors the status of WAL archiving.
+- `WAL_dir_size.sh`: Checks the size of the WAL directory to avoid excessive disk usage.
+- `WAL_file_status.sql`: Displays the status and location of WAL files.
+
+## Security
+
+Scripts to monitor and enhance database security, including role management, auditing, password expiration, and SSL connections.
+
+- `all_user_role.sql`: Lists all users and roles with their permissions.
+- `check_role_table_permissions.sql`: Checks table-level permissions for roles.
+- `find_SQL_injections_attempts.sql`: Detects potential SQL injection attempts.
+- `get_superuser.sql`: Lists all superuser roles, identifying accounts with elevated privileges.
+- `inherit_roles.sql`: Displays inheritance relationships among roles.
+- `login_audit.sql`: Audits login attempts for security monitoring.
+- `long_run_idle_conn.sql`: Identifies long-running idle connections that may be security risks.
+- `monitor_pass_expired.sql`: Monitors roles with expired passwords to enforce security policies.
+- `monitor_ssl_conn.sql`: Checks SSL connections to ensure secure data transmission.
+- `recent_privil_changes.sql`: Tracks recent privilege changes for roles.
+- `unused_roles.sql`: Identifies roles that are unused and can be cleaned up.
+
+## Statistics
+
+Scripts for monitoring and analyzing database statistics, including disk usage, cache hit ratio, transaction activity, and query execution times.
+
+- `disk_usage_table_and_indexes.sql`: Monitors disk usage for tables and indexes.
+- `cache_hit_ratio.sql`: Calculates the cache hit ratio to assess memory efficiency.
+- `checkpoint_activity.sql`: Tracks checkpoint activity for performance tuning.
+- `db_conn.sql`: Provides connection statistics and usage.
+- `index_usage_and_effectiveness.sql`: Evaluates index usage and effectiveness.
+- `table_usage_and_activity.sql`: Analyzes table usage and activity for optimization.
+- `temp_file_usage.sql`: Tracks temporary file usage, indicating queries that may require more memory.
+- `top_query_exec_time.sql`: Lists queries with the highest execution times.
+- `track_WAL_stat.sql`: Monitors WAL statistics to ensure efficient logging and replication.
+- `transactions_statistics.sql`: Provides statistics on transaction activity for workload analysis.
+
+## Tables
+
+Scripts focused on table management and optimization, including bloat, indexing, and usage statistics.
+
+- `table_bloat.sql`: Identifies tables with significant bloat that may need vacuuming or reindexing.
+- `table_excessive_indexes.sql`: Detects tables with an excessive number of indexes, which may slow down write operations.
+- `table_large.sql`: Lists large tables to monitor storage usage.
+- `table_missing_PK.sql`: Finds tables without a primary key, which may affect data integrity.
+- `table_temp_files.sql`: Tracks temporary file usage by tables, indicating potential memory issues.
+- `table_usage.sql`: Analyzes table usage for performance optimization.
+
 ---
