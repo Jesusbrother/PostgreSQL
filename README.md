@@ -17,6 +17,15 @@
    - [Backup](#backup)
    - [Bloat](#bloat)
    - [Reindex](#reindex)
+   - [Vacuum and Analize](#Vacuum_and_Analize)
+10. [Memory](#Memory)
+11. [Network](#Network)
+12. [Query Optimization](#Query_Optimization)
+13. [Replication](#Replication)
+14. [Security](#Security)
+15. [Statistics](#Statistics)
+16. [Tables](#Tables)
+
 
 ---
 
@@ -143,7 +152,7 @@ Scripts to manage and automate reindexing for improved performance.
 - `1_script.sh`: Performs reindexing operations.
 - `2_cron.txt`: Cron job configuration for weekly reindex execution.
 
-### Vacuum and Analyze
+### Vacuum_and_Analyze
 
 Scripts to manage and automate the vacuum and analyze processes, helping to keep table statistics up-to-date and minimize table bloat.
 
@@ -173,7 +182,7 @@ Scripts for monitoring network activity and managing connections, including trac
 - `idle_conn.sql`: Identifies idle connections that may need termination.
 - `network_usage.sh`: Monitors network usage by PostgreSQL processes at the system level.
 
-## Query Optimization
+## Query_Optimization
 
 Scripts designed to analyze and improve query performance by identifying long-running queries, missing indexes, and execution statistics.
 
