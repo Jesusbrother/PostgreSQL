@@ -25,6 +25,9 @@
 14. [Security](#Security)
 15. [Statistics](#Statistics)
 16. [Tables](#Tables)
+17. [Transcations](#Transcations)
+17. [Vacuum](#Vacuum)
+18. [WAL](#WAL)
 
 
 ---
@@ -246,4 +249,36 @@ Scripts focused on table management and optimization, including bloat, indexing,
 - `table_temp_files.sql`: Tracks temporary file usage by tables, indicating potential memory issues.
 - `table_usage.sql`: Analyzes table usage for performance optimization.
 
+## Transactions
+
+Scripts for managing and monitoring transactions, including lock checking and terminating idle or long-running transactions.
+
+- `check_locks.sql`: Identifies transaction locks that may block other operations.
+- `kill_idle_transactions`: Terminates idle transactions that have exceeded a defined time limit.
+- `kill_long_run_transactions_9.1.sh`: Terminates long-running transactions for PostgreSQL 9.1.
+- `kill_long_run_transactions_9.2_and_above.sh`: Terminates long-running transactions for PostgreSQL 9.2 and above.
+
+## Vacuum
+
+Scripts for monitoring and managing table vacuuming and analyzing to reduce bloat and maintain table health.
+
+- `table_no_analized_long_time.sql`: Identifies tables that haven't been analyzed for an extended period.
+- `db_xid_age.sql`: Monitors the transaction ID age of the database to prevent wraparound.
+- `last_autovacuum_and_autoanalyze.sql`: Shows the last autovacuum and autoanalyze times for each table.
+- `last_vacuum_and_autovacuum.sql`: Displays the last manual and automatic vacuum times.
+- `no_stats_tables_and_colums.sql`: Lists tables and columns lacking updated statistics.
+- `table_high_bloat_pct.sql`: Identifies tables with a high bloat percentage that may need vacuuming.
+- `table_no_vac_long_time.sql`: Finds tables that haven't been vacuumed for a long time.
+- `tables_xid_age.sql`: Shows the transaction ID age for each table to monitor potential wraparound issues.
+
+## WAL
+
+Scripts for monitoring and managing WAL usage, including size, generation rate, and replication lag.
+
+- `wal_size.sql`: Checks the current size of WAL files.
+- `replica_lag.sql`: Monitors replication lag to ensure data consistency between primary and standby.
+- `wal_archive_status.sql`: Verifies the status of WAL archiving to confirm successful backups.
+- `wal_disk_usage.sh`: Tracks disk usage of the WAL directory to avoid storage issues.
+- `wal_gen_rate.sql`: Monitors the rate of WAL generation, helping to manage disk space requirements.
+- `wal_heavy_queries.sql`: Identifies queries generating a large amount of WAL data, impacting performance.
 ---
