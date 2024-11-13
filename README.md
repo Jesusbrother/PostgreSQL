@@ -155,7 +155,7 @@ Scripts to manage and automate reindexing for improved performance.
 - `1_script.sh`: Performs reindexing operations.
 - `2_cron.txt`: Cron job configuration for weekly reindex execution.
 
-### Vacuum_and_Analyze
+### Vacuum_and_Analize
 
 Scripts to manage and automate the vacuum and analyze processes, helping to keep table statistics up-to-date and minimize table bloat.
 
