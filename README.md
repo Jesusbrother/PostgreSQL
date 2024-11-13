@@ -10,24 +10,25 @@
 4. [Connections](#connections)
 5. [CPU](#cpu)
 6. [Disk I/O](#disk-io)
-7. [Indexes](#indexes)
-8. [Logs](#logs)
+7. [Hardware](#Hardware)
+8. [Indexes](#indexes)
+9. [Logs](#logs)
    - [Logrotate](#logrotate)
-9. [Maintenance](#maintenance)
+10. [Maintenance](#maintenance)
    - [Backup](#backup)
    - [Bloat](#bloat)
    - [Reindex](#reindex)
    - [Vacuum and Analize](#Vacuum_and_Analize)
-10. [Memory](#Memory)
-11. [Network](#Network)
-12. [Query Optimization](#Query_Optimization)
-13. [Replication](#Replication)
-14. [Security](#Security)
-15. [Statistics](#Statistics)
-16. [Tables](#Tables)
-17. [Transcations](#Transcations)
-17. [Vacuum](#Vacuum)
-18. [WAL](#WAL)
+11. [Memory](#Memory)
+12. [Network](#Network)
+13. [Query Optimization](#Query_Optimization)
+14. [Replication](#Replication)
+15. [Security](#Security)
+16. [Statistics](#Statistics)
+17. [Tables](#Tables)
+18. [Transcations](#Transcations)
+19. [Vacuum](#Vacuum)
+20. [WAL](#WAL)
 
 
 ---
@@ -116,6 +117,16 @@ Scripts for managing and analyzing index usage.
 - `index_need_add.sql`: Suggests indexes that may improve performance.
 - `index_size.sql`: Lists the size of each index.
 - `index_unused.sql`: Identifies unused indexes.
+
+## Hardware
+
+Scripts for estimating and analyzing hardware resource requirements based on database usage patterns.
+
+- `CPU.md`: CPU estimating tips
+- `RAM_data_cache.sql`: Estimates the required memory (RAM) for data caching based on read operations per second, cache hit ratio, and average row size.
+- `IO_disk_load.sql`: Calculates disk I/O load requirements by analyzing read and write operations per second and average operation size.
+- `WAL_size.sql`: Estimates the daily WAL (Write-Ahead Log) size under high transaction load, useful for planning disk space and network capacity in replication setups.
+- `INDEX_size.sql`: Calculates the required storage for indexes based on the expected number of rows and average index entry size.
 
 ## Logs
 
